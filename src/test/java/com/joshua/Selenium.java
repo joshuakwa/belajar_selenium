@@ -1,3 +1,5 @@
+package com.joshua;
+
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +11,6 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Selenium {
-
     public static WebDriver driver;
 
     @Test
@@ -25,6 +26,15 @@ public class Selenium {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         // navigasi url
         driver.get("https://jayjay.co");
+
+        String text = driver.findElement(By.tagName("h1")).getText();
+        assertEquals("Belajar dari para ahli terbaik\n" +
+                "berdasarkan program Eropa", text);
+
+        String text2 = driver.findElement(By.className("section-title")).getText();
+        assertEquals("Manfaat belajar dengan JayJay", text2);
+
+
         Thread.sleep(2000);
         driver.quit();
     }
